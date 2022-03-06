@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="form-content">
+      <article class="form-panel">
+        <div class="form-content">
+          <h2>Request Form</h2>
+          <p>Enter Details</p>
+          <div class="form-fieldset">
+            <div>
+              <label>Patient Name:</label>
+              <input type="text" class="input-text" placeholder="Enter Name" />
+            </div>
+            <div>
+              <label>Phone Number:</label>
+              <input
+                type="text"
+                class="input-text"
+                placeholder="Enter Phone Number"
+              />
+            </div>
+            <div>
+              <label>Age:</label>
+              <input type="text" class="input-text" placeholder="Enter Age" />
+            </div>
+            <div class="Requirement">
+              <label>Requirement:</label>
+                  <input type="radio" name="group1" value="beds" onchange="changed()" class="beds" />
+                Beds
+                <div class='bedOptions'></div>
+                <br />
+                  <input type="radio" name="group1" value="blood" onchange="changed()" class="blood" />
+                Blood
+                <div class="bloodOptions"></div>
+                <br />
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <script>
+      var bedOpt = document.querySelector(".bedOptions");
+      var bloodOpt = document.querySelector(".bloodOptions")
+      // console.log(requ);
+      var radioBeds = document.querySelector(".Requirement .beds");
+      var radioBlood = document.querySelector(".Requirement .blood");
+      var bothRadioButtons = document.querySelectorAll(".radio1");
+      // console.log(radioBlood.checked);
+      var changed = ()=>{
+      var htmlBlood = `<div id="area-2" class="area">
+                <input type="radio" name="group1" />A+<br />
+                <input type="radio" name="group1" />O+<br />
+                <input type="radio" name="group1" />B+<br />
+                <input type="radio" name="group1" /> AB+<br />
+                <input type="radio" name="group1" />A-<br />
+                <input type="radio" name="group1" /> B-<br />
+                <input type="radio" name="group1" />AB-<br />
+                <input type="radio" name="group1" /> O-<br />
+              </div>`;
+
+      var htmlBeds = `<div id="area-1" class="area">
+              <input type="radio" name="group1" value="1" />Emergency Beds<br />
+              <br />
+              <input type="radio" name="group1" value="2" /> General Beds<br />
+            </div>`;
+
+      console.log(radioBeds.checked, radioBlood.checked);
+      if(radioBeds.checked){
+        if(!!document.querySelector('#area-2'))
+          document.querySelector('#area-2').remove();
+        bedOpt.innerHTML = htmlBeds;
+      }
+      else if(radioBlood.checked){
+        if(!!document.querySelector('#area-1'))
+          document.querySelector('#area-1').remove();
+        bloodOpt.innerHTML = htmlBlood;
+      }
+
+      //TRIAL AND ERRORS : )
+      // bothRadioButtons.forEach(function (radio) {
+      //   console.log(radio.value);
+        // radio.addEventListener("change", (event) => {
+      //     console.log(radio.value);
+      //     if(event.target.value == "blood"){
+      //       if(!!document.querySelectorAll('#area-2')){
+      //         htmlBeds.remove;
+      //       };
+      //       requ.innerHTML += htmlBlood;
+      //     }
+      //   else if(event.target.value == "beds"){
+      //     console.log(!!document.querySelector('.area'));
+      //     requ.innerHTML += htmlBeds;
+      //   }
+      //   // });
+      // });
+    //   })
+     }
+      // radioBlood.addEventListener("click", function () {
+      //   if (radioBlood.checked) {
+      //     var htmlBlood = `<div id="area-2" class="area">
+      //           <input type="radio" name="group1" />A+<br />
+      //           <input type="radio" name="group1" />O+<br />
+      //           <input type="radio" name="group1" />B+<br />
+      //           <input type="radio" name="group1" /> AB+<br />
+      //           <input type="radio" name="group1" />A-<br />
+      //           <input type="radio" name="group1" /> B-<br />
+      //           <input type="radio" name="group1" />AB-<br />
+      //           <input type="radio" name="group1" /> O-<br />
+      //         </div>`;
+
+      //     requ.innerHTML += htmlBlood;
+      //   }
+      // });
+      // radioBeds.addEventListener("click", function () {
+      //   if (radioBeds.checked) {
+      //     var htmlBeds = `<div id="area-1" class="area">
+      //           <input type="radio" name="group1" value="1" />Emergency Beds<br />
+      //           <br />
+      //           <input type="radio" name="group1" value="2" /> General Beds<br />
+      //         </div>`;
+      //     requ.innerHTML += htmlBeds;
+      //   }
+      // });
+    </script>
+  </body>
+</html>
